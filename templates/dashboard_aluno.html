@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Aluno{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 class="mb-4">Meu Desempenho</h2>
+    
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Matéria</th>
+                <th>Nota Atual</th>
+                <th>Frequência</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for materia in materias %}
+            <tr>
+                <td>{{ materia[0] }}</td>
+                <td>{{ materia[1] if materia[1] else '-' }}</td>
+                <td>{{ materia[2] }}% {{ '✅' if materia[2] >= 75 else '⚠️' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
